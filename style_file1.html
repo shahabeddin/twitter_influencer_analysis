@@ -17,7 +17,7 @@
 <body onload="init();">
 
 <p>
-  Retweets
+  
 </p>
 
 <div id="mynetwork" style="height: 800px; width: 900px;"></div>
@@ -42,8 +42,8 @@
 			arrowStrikethrough: true,
             color: {
                color: '#848484',
-               highlight: '#848484',
-               hover: '#848484',
+               highlight: '#8A324E',
+               hover: '#8BADD3',
                inherit: 'from',
                opacity: 1.0
             },
@@ -65,10 +65,10 @@
                max: 15,
                label: {
                   enabled: false,
-                  min: 12,
-                  max: 25*1,
-                  maxVisible: 10*1,
-                  drawThreshold: 20,
+                  min: 14,
+                  max: 30*1,
+                  maxVisible: 30*1,
+                  drawThreshold: 5,
                }
             },
 			selectionWidth: 1,
@@ -86,15 +86,15 @@
                forceDirection: 'none',
                roundness: 0.5
             },
-            width: 1*1,
+            width: 3*1,
 		  },
 		  interaction:{
 			dragNodes: true,
 			dragView: true,
 			hideEdgesOnDrag: false,
 			hideNodesOnDrag: false,
-			hover: false,
-			hoverConnectedEdges: false,
+			hover: true,
+			hoverConnectedEdges: true,
 			keyboard: {
 				enabled: false,
 				speed: {x: 10, y: 10, zoom: 0.02},
@@ -124,17 +124,17 @@
 			  color: {
 			     border: 'black',
                  highlight: {
-					background: 'orange',
-                    border: '#2B7CE9'
+					background: '#D3918B',
+                    border: 'red'
                  },
                  hover: {
-                    background: 'orange',
-                    border: '#2B7CE9'
+                    background: '#8BADD3',
+                    border: 'blue'
                  }
 			  },
               font: {
                  color: '#343434',
-                 size: 14*1,
+                 size: 25*1,
                  face: 'arial',
                  background: 'rgba(0,0,0,0)',
                  strokeWidth: 0,
@@ -154,10 +154,10 @@
 				 max: 30,
 				 label: {
                      enabled: false,
-                     min: 12,
-                     max: 25*1,
-                     maxVisible: 10*1,
-                     drawThreshold: 20
+                     min: 14,
+                     max: 30*1,
+                     maxVisible: 30*1,
+                     drawThreshold: 5
                  }
               },
               shadow:{
@@ -176,11 +176,11 @@
 			  }
           },
 		 physics: {
-            enabled: false,
+            enabled: true,
             stabilization: false,
             barnesHut: {gravitationalConstant: -8000, springConstant: 0.012, springLength: 100},
-            maxVelocity: 16,
-            minVelocity: 0.5,
+            maxVelocity: 15,
+            minVelocity: 1,
             solver: 'barnesHut',
             adaptiveTimestep: true,
             stabilization: {
@@ -212,7 +212,7 @@
                          },
                          title: python_nodes[i].title,
                          shape: python_nodes[i].node_shape,
-                         size: Math.sqrt(python_nodes[i].node_size)*4*1,
+                         size: (python_nodes[i].degree)*5*1,
                          x: python_nodes[i].x * 1,
                          y: python_nodes[i].y * 1});
          }
@@ -222,7 +222,7 @@
          edgeArray.push({from: python_edges[i].source,
                          to: python_edges[i].target,
 						 label: python_edges[i].id,
-                         title: python_edges[i].title,
+                         title: python_edges[i].id,
                          color: {
                             color: python_edges[i].color,
                             opacity: 1.0
